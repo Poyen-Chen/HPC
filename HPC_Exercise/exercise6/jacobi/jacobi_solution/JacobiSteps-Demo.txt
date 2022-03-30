@@ -1,0 +1,34 @@
+1) pgaccelinfo
+2) Jacobi Erklaeren
+3) Jacobi Measurements
+=> Tabelle öffnen
+
+1) 1-parallel (+loop + reduction + compiler feedback)
+- Code erklären
+- Run w/o OpenACC - look at output
+- Parallel einfügen (1x at first loop)
+- ohne schedule, nimmt außen gang, innen vector (128)
+- Compiler Feedback (Acc kernel generated, Reduction, data movement, loop schedule)
+- include reduction clause (entweder an parallel oder loop)
+- Run + measure (basic)
+
+Code Profiling
+- PGI_ACC_TIME: make run time=1
+  - Faktor in data: data((227 ms + 206 ms) / (12 ms) = 433 ms / 12 ms = 36)
+- Profiler (explain output) => What to do (see hints of proviler concerning compute/memcpy), right hand side: tab properties (duration) of DtoH and kernel
+  - Where do we have to move data?
+
+2) 2-data
+- Parallel at second loop
+- Data region (copy U, create Unew)
+- present clause not needed, but do
+- run + measure (data)
+- PGI_ACC_TIME => extra Region für Data (nicht mehr bei kernels);  (11 + 10) / (12 + 10) = 21/ 22 = 1
+- Profiler
+
+3) loop-bad
+- compiler feedback von (2) erzeugen
+- kompilieren
+- loop gang vector clause
+- schlechter, warum?
+

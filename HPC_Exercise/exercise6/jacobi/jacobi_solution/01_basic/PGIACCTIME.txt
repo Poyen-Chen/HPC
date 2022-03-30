@@ -1,0 +1,51 @@
+PGI_ACC_TIME=1 ./laplace_openacc 
+Running on GPU with ID 0.
+
+Solving Laplace Equation by Jacobi Method
+Matrix dim: 4096 x 4096
+
+Iteration: Error
+        1: 0.250000
+        2: 0.125000
+        3: 0.078125
+        4: 0.054688
+        5: 0.046875
+        6: 0.040283
+        7: 0.034912
+        8: 0.030548
+        9: 0.026978
+       10: 0.024027
+       11: 0.021563
+       12: 0.019483
+       13: 0.018266
+       14: 0.017142
+       15: 0.016111
+       16: 0.015165
+       17: 0.014298
+       18: 0.013504
+       19: 0.012775
+       20: 0.012105
+Time Elapsed: 2.139592 s
+
+Accelerator Kernel Timing data
+/rwthfs/rz/cluster/work/sw702031/vorlesungGit/lecture-hpc/2018_WS_HPC/Exercise/ex06/ex6_sol/jacobi/01_basic/laplace.c
+  main  NVIDIA  devicenum=0
+    time(us): 447,559
+    57: compute region reached 20 times
+        57: data copyin transfers: 20
+             device time(us): total=262 max=25 min=11 avg=13
+        57: kernel launched 20 times
+            grid: [4094]  block: [128]
+             device time(us): total=12,564 max=633 min=625 avg=628
+            elapsed time(us): total=13,463 max=699 min=665 avg=673
+        57: reduction kernel launched 20 times
+            grid: [1]  block: [256]
+             device time(us): total=202 max=11 min=10 avg=10
+            elapsed time(us): total=655 max=50 min=30 avg=32
+        57: data copyout transfers: 20
+             device time(us): total=360 max=30 min=16 avg=18
+    57: data region reached 40 times
+        57: data copyin transfers: 160
+             device time(us): total=227,520 max=1,441 min=1,417 avg=1,422
+        72: data copyout transfers: 160
+             device time(us): total=206,651 max=1,297 min=1,281 avg=1,291

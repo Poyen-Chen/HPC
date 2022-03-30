@@ -1,0 +1,58 @@
+PGI_ACC_TIME=1 ./laplace_openacc 
+Running on GPU with ID 0.
+
+Solving Laplace Equation by Jacobi Method
+Matrix dim: 4096 x 4096
+
+Iteration: Error
+        1: 0.250000
+        2: 0.125000
+        3: 0.078125
+        4: 0.054688
+        5: 0.046875
+        6: 0.040283
+        7: 0.034912
+        8: 0.030548
+        9: 0.026978
+       10: 0.024027
+       11: 0.021563
+       12: 0.019483
+       13: 0.018266
+       14: 0.017142
+       15: 0.016111
+       16: 0.015165
+       17: 0.014298
+       18: 0.013504
+       19: 0.012775
+       20: 0.012105
+Time Elapsed: 0.111912 s
+
+Accelerator Kernel Timing data
+/rwthfs/rz/cluster/work/sw702031/vorlesungGit/lecture-hpc/2018_WS_HPC/Exercise/ex06/ex6_sol/jacobi/02_data/laplace.c
+  main  NVIDIA  devicenum=0
+    time(us): 46,719
+    52: data region reached 2 times
+        52: data copyin transfers: 8
+             device time(us): total=11,456 max=1,474 min=1,420 avg=1,432
+        88: data copyout transfers: 9
+             device time(us): total=10,329 max=1,322 min=19 avg=1,147
+    58: compute region reached 20 times
+        58: data copyin transfers: 20
+             device time(us): total=108 max=14 min=4 avg=5
+        58: kernel launched 20 times
+            grid: [4094]  block: [128]
+             device time(us): total=12,541 max=633 min=624 avg=627
+            elapsed time(us): total=13,004 max=690 min=645 avg=650
+        58: reduction kernel launched 20 times
+            grid: [1]  block: [256]
+             device time(us): total=207 max=11 min=10 avg=10
+            elapsed time(us): total=613 max=36 min=29 avg=30
+        58: data copyout transfers: 20
+             device time(us): total=253 max=24 min=12 avg=12
+    58: data region reached 40 times
+    71: compute region reached 20 times
+        71: kernel launched 20 times
+            grid: [4094]  block: [128]
+             device time(us): total=11,825 max=597 min=588 avg=591
+            elapsed time(us): total=12,288 max=620 min=611 avg=614
+    71: data region reached 40 times
